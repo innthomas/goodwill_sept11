@@ -71,7 +71,6 @@ class _TransactionPageState extends State<TransactionPage> {
                             setState(() {
                               a.accountBalance -=
                                   double.parse(_controller.text);
-                              box.add(a.accountBalance);
 
                               _controller.clear();
                               Navigator.pop(context);
@@ -86,7 +85,6 @@ class _TransactionPageState extends State<TransactionPage> {
                             setState(() {
                               a.accountBalance +=
                                   double.parse(_controller.text);
-                              box.add(a.accountBalance);
 
                               _controller.clear();
                               Navigator.pop(context);
