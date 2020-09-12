@@ -17,7 +17,6 @@ class _TransactionPageState extends State<TransactionPage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget _buildDivider() => const SizedBox(width: 10);
     Box box = Hive.box<Account>(accountBoxName);
 
     return Scaffold(
@@ -38,7 +37,6 @@ class _TransactionPageState extends State<TransactionPage> {
           itemCount: box.length,
           itemBuilder: (context, index) {
             Account a = box.getAt(index);
-            double _balance = a.accountBalance;
 
             return InkWell(
               onTap: () {
@@ -108,20 +106,9 @@ class _TransactionPageState extends State<TransactionPage> {
                   child: ListTile(
                     key: widget.key,
                     leading: Icon(Icons.person),
-                    title: Row(
-                      children: <Widget>[
-                        Text(" ${a.accountName.toUpperCase()}",
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                        _buildDivider(),
-                        Text(
-                          "${a.accountNumber}",
-                          style: TextStyle(
-                              fontSize: 23.0, color: Colors.blue[700]),
-                        ),
-                        _buildDivider(),
-                        Text("balance: N")
-                      ],
-                    ),
+                    title: Text(" ${a.accountName.toUpperCase()}",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    subtitle: Text(a.accountNumber.toString()),
                     trailing: Text(
                       a.accountBalance.toString(),
                       style: TextStyle(

@@ -15,14 +15,18 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.yellow[100],
       drawer: Drawer(
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 20.0),
-            CircleAvatar(child: Image.asset("images/mkt.png"), radius: 50.0),
-            SizedBox(height: 20.0),
-            IconButton(
-                iconSize: 30.0, icon: Icon(Icons.settings), onPressed: () {}),
-          ],
+        child: Container(
+          color: Colors.yellow[200],
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 30.0),
+              CircleAvatar(
+                  child: Image.asset("images/inn5.jpeg"), radius: 100.0),
+              SizedBox(height: 20.0),
+              IconButton(
+                  iconSize: 30.0, icon: Icon(Icons.settings), onPressed: () {}),
+            ],
+          ),
         ),
       ),
       appBar: AppBar(
