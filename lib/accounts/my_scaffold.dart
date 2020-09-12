@@ -128,8 +128,8 @@ class _AddContactState extends State<AddContact> {
 
   void onFormSubmit() {
     if (widget.formKey.currentState.validate()) {
-      Box<Account> contactsBox = Hive.box<Account>(accountBoxName);
-      contactsBox.add(Account(accountName, accountNumber, phoneNumber,
+      Box<Account> accountBox = Hive.box<Account>(accountBoxName);
+      accountBox.add(Account(accountName, accountNumber, phoneNumber,
           salesCategory, accountBalance));
       Navigator.of(context).pop();
     }

@@ -7,6 +7,7 @@ import 'package:goodwill_sept11/home/home_page.dart';
 import 'package:goodwill_sept11/accounts/my_scaffold.dart';
 
 class TransactionPage extends StatefulWidget {
+  TransactionPage({Key key}) : super(key: key);
   @override
   _TransactionPageState createState() => _TransactionPageState();
 }
@@ -40,46 +41,60 @@ class _TransactionPageState extends State<TransactionPage> {
             double _balance = a.accountBalance;
 
             return InkWell(
-              onLongPress: () {
+              onTap: () {
                 showDialog(
                   context: context,
                   barrierDismissible: true,
-                  child: AlertDialog(
-                    content: Column(
-                      children: <Widget>[
-                        Text("${a.accountName} ${a.accountNumber}"),
-                        TextField(
-                          decoration: InputDecoration(hintText: "amount"),
-                          keyboardType:
-                              TextInputType.numberWithOptions(decimal: true),
-                          controller: _controller,
+                  child: Container(
+                    color: Colors.yellow[100],
+                    height: 100,
+                    width: 200,
+                    child: AlertDialog(
+                      actionsOverflowButtonSpacing: 10.0,
+                      actionsPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                      title: Text("transaction window"),
+                      content: Column(
+                        children: <Widget>[
+                          Text("${a.accountName} ${a.accountNumber}"),
+                          TextField(
+                            autofocus: true,
+                            decoration: InputDecoration(hintText: "amount"),
+                            keyboardType:
+                                TextInputType.numberWithOptions(decimal: true),
+                            controller: _controller,
+                          ),
+                        ],
+                      ),
+                      actions: <Widget>[
+                        RaisedButton(
+                          color: Colors.red,
+                          child: Text("withdraw"),
+                          onPressed: () {
+                            setState(() {
+                              a.accountBalance -=
+                                  double.parse(_controller.text);
+
+                              _controller.clear();
+                              Navigator.pop(context);
+                            });
+                          },
+                        ),
+                        SizedBox(width: 60.0),
+                        RaisedButton(
+                          color: Colors.green,
+                          child: Text("deposit"),
+                          onPressed: () {
+                            setState(() {
+                              a.accountBalance +=
+                                  double.parse(_controller.text);
+
+                              _controller.clear();
+                              Navigator.pop(context);
+                            });
+                          },
                         ),
                       ],
                     ),
-                    actions: <Widget>[
-                      FlatButton(
-                        child: Text("withdraw"),
-                        onPressed: () {
-                          setState(() {
-                            _balance -= double.parse(_controller.text);
-                            box.add(index);
-                            _controller.clear();
-                            Navigator.pop(context);
-                          });
-                        },
-                      ),
-                      FlatButton(
-                        child: Text("deposit"),
-                        onPressed: () {
-                          setState(() {
-                            _balance += double.parse(_controller.text);
-                            box.add(index);
-                            _controller.clear();
-                            Navigator.pop(context);
-                          });
-                        },
-                      ),
-                    ],
                   ),
                 );
               },
@@ -91,6 +106,7 @@ class _TransactionPageState extends State<TransactionPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: ListTile(
+                    key: widget.key,
                     leading: Icon(Icons.person),
                     title: Row(
                       children: <Widget>[
@@ -107,11 +123,11 @@ class _TransactionPageState extends State<TransactionPage> {
                       ],
                     ),
                     trailing: Text(
-                      "${a.accountBalance}",
+                      a.accountBalance.toString(),
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 25.0,
-                          color: _color(_balance)),
+                          color: _color(a.accountBalance)),
                     ),
                   ),
                 ),
