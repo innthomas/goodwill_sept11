@@ -71,6 +71,9 @@ class _TransactionPageState extends State<TransactionPage> {
                             setState(() {
                               a.accountBalance -=
                                   double.parse(_controller.text);
+                              Box<Account> accountBox =
+                                  Hive.box<Account>(accountBoxName);
+                              accountBox.putAt(index, a);
 
                               _controller.clear();
                               Navigator.pop(context);
@@ -85,6 +88,12 @@ class _TransactionPageState extends State<TransactionPage> {
                             setState(() {
                               a.accountBalance +=
                                   double.parse(_controller.text);
+                                  Box<Account> accountBox =
+                                  Hive.box<Account>(accountBoxName);
+                              accountBox.putAt(index, a);
+                                  
+
+                                  
 
                               _controller.clear();
                               Navigator.pop(context);
