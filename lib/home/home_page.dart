@@ -25,7 +25,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Image.asset("images/inn5.jpeg"), radius: 100.0),
               SizedBox(height: 20.0),
               IconButton(
-                  iconSize: 30.0, icon: Icon(Icons.settings), onPressed: () {}),
+                  iconSize: 50.0, icon: Icon(Icons.settings), onPressed: () {}),
+              SizedBox(height: 20.0),
+              CircleAvatar(
+                child: Image.asset("images/mkt.png"),
+                radius: 50.0,
+              ),
+              SizedBox(height: 20.0),
+              IconButton(
+                  iconSize: 50.0,
+                  icon: Icon(
+                    Icons.arrow_back,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  })
             ],
           ),
         ),
@@ -60,19 +74,25 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: Container(
               color: Colors.yellow[100],
-              height: 300,
+              height: 200,
               width: 200,
-              child: Column(
-                children: <Widget>[
-                  Image.asset("images/account.png"),
-                  Text(
-                    "accounts",
-                    style: TextStyle(
-                        fontFamily: "Requiem",
-                        color: Colors.teal[900],
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
+              child: SizedBox(
+                child: Stack(
+                  children: [
+                    Center(
+                      child: Text(
+                        "       new account",
+                        style: TextStyle(
+                            fontSize: 25.0,
+                            fontFamily: "Pacifico",
+                            color: Colors.teal[900],
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Image.asset("images/account.png"),
+                  ],
+                ),
+                height: 200.0,
               ),
             ),
           ),
@@ -87,7 +107,24 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.green[100],
               height: 200,
               width: 200,
-              child: Image.asset("images/mkt.png"),
+              child: SizedBox(
+                child: Stack(
+                  children: <Widget>[
+                    Center(child: Text("transactions")),
+                    Image.asset("images/piggy.gif"),
+                    Container(
+                      color: Colors.black12,
+                      child: Center(
+                          child: Text(
+                        "                      transactions",
+                        style:
+                            TextStyle(fontFamily: "Pacifico", fontSize: 30.0),
+                      )),
+                    ),
+                  ],
+                ),
+                height: 150.0,
+              ),
             ),
           ),
         ],

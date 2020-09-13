@@ -21,7 +21,7 @@ class MyScaffold extends StatelessWidget {
         toolbarHeight: 100.0,
         centerTitle: true,
         title: Text(
-          "Accounts",
+          "add new account",
           style: TextStyle(
               color: Colors.yellowAccent,
               fontFamily: "Pacifico",
