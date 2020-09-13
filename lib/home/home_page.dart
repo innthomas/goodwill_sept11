@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodwill_sept11/accounts/my_scaffold.dart';
+import 'package:goodwill_sept11/transaction/search_screen.dart';
 import 'package:goodwill_sept11/transaction/transaction_screen.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -90,6 +91,18 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.person_search_outlined,
+          size: 50.0,
+        ),
+        onPressed: () {
+          showSearch(
+            context: context,
+            delegate: AccountSearch(),
+          );
+        },
       ),
     );
   }
