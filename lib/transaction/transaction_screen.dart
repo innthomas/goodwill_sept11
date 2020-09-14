@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+
 import '../account_model/account.dart';
-import 'package:goodwill_sept11/main.dart';
-import 'package:goodwill_sept11/home/home_page.dart';
-import 'package:goodwill_sept11/accounts/my_scaffold.dart';
 
 class TransactionPage extends StatefulWidget {
   TransactionPage({Key key}) : super(key: key);
@@ -88,12 +85,9 @@ class _TransactionPageState extends State<TransactionPage> {
                             setState(() {
                               a.accountBalance +=
                                   double.parse(_controller.text);
-                                  Box<Account> accountBox =
+                              Box<Account> accountBox =
                                   Hive.box<Account>(accountBoxName);
                               accountBox.putAt(index, a);
-                                  
-
-                                  
 
                               _controller.clear();
                               Navigator.pop(context);

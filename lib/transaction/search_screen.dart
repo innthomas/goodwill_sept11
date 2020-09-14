@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodwill_sept11/transaction/transaction_screen.dart';
 import 'package:hive/hive.dart';
 
 import '../account_model/account.dart';
@@ -65,7 +66,15 @@ class AccountSearch extends SearchDelegate<Box> {
   Widget selectedResult;
   @override
   Widget buildResults(BuildContext context) {
-    return Container(child: selectedResult);
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => TransactionPage()),
+        );
+      },
+      child: selectedResult,
+    );
   }
 
   //List<dynamic> listExample;
@@ -88,6 +97,10 @@ class AccountSearch extends SearchDelegate<Box> {
           subtitle: Text("${suggestionList[index].accountNumber}"),
           trailing: Text("${suggestionList[index].accountBalance}"),
           onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (index) => TransactionPage()),
+            );
             selectedResult = suggestionList[index].accountName as Widget;
             showResults(context);
           },
