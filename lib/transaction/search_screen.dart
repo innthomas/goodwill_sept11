@@ -65,7 +65,7 @@ class AccountSearch extends SearchDelegate<Box> {
   Widget selectedResult;
   @override
   Widget buildResults(BuildContext context) {
-    return selectedResult;
+    return Container(child: selectedResult);
   }
 
   //List<dynamic> listExample;
@@ -77,7 +77,7 @@ class AccountSearch extends SearchDelegate<Box> {
     List<Account> suggestionList = [];
 
     query.isEmpty
-        ? suggestionList = recentList
+        ? suggestionList = accountlist
         : suggestionList.addAll(accountlist
             .where((element) => element.accountName.contains(query)));
     return ListView.builder(
