@@ -108,10 +108,19 @@ class _TransactionPageState extends State<TransactionPage> {
                   padding: const EdgeInsets.all(15.0),
                   child: ListTile(
                     key: widget.key,
-                    leading: Icon(Icons.person),
+                    leading: Icon(
+                      Icons.person,
+                      color: Colors.yellowAccent,
+                    ),
                     title: Text(" ${a.accountName.toUpperCase()}",
                         style: TextStyle(fontWeight: FontWeight.bold)),
-                    subtitle: Text(a.accountNumber.toString()),
+                    subtitle: Text(
+                      a.accountNumber.toString(),
+                      style: TextStyle(
+                          color: Colors.blueGrey,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold),
+                    ),
                     trailing: Text(
                       a.accountBalance.toString(),
                       style: TextStyle(

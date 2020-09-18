@@ -61,73 +61,75 @@ class _MyHomePageState extends State<MyHomePage> {
               fontWeight: FontWeight.bold),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MyScaffold()),
-              );
-            },
-            child: Container(
-              color: Colors.yellow[100],
-              height: 200,
-              width: 200,
-              child: SizedBox(
-                child: Stack(
-                  children: [
-                    Center(
-                      child: Text(
-                        "       new account",
-                        style: TextStyle(
-                            fontSize: 25.0,
-                            fontFamily: "Pacifico",
-                            color: Colors.teal[900],
-                            fontWeight: FontWeight.bold),
+      body: SizedBox(
+        height: 600.0,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyScaffold()),
+                );
+              },
+              child: Container(
+                color: Colors.yellow[100],
+                height: 200,
+                width: 200,
+                child: SizedBox(
+                  child: Stack(
+                    children: [
+                      Center(
+                        child: Text(
+                          "       new account",
+                          style: TextStyle(
+                              fontSize: 25.0,
+                              fontFamily: "Pacifico",
+                              color: Colors.teal[900],
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
-                    Image.asset("images/account.png"),
-                  ],
+                      Image.asset("images/account.png"),
+                    ],
+                  ),
+                  height: 200.0,
                 ),
-                height: 200.0,
               ),
             ),
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => TransactionPage()),
-              );
-            },
-            child: Container(
-              color: Colors.green[100],
-              height: 200,
-              width: 200,
-              child: SizedBox(
-                child: Stack(
-                  children: <Widget>[
-                    Center(child: Text("transactions")),
-                    Image.asset("images/piggy.gif"),
-                    Container(
-                      color: Colors.black12,
-                      child: Center(
-                          child: Text(
-                        "                      transactions",
-                        style:
-                            TextStyle(fontFamily: "Pacifico", fontSize: 30.0),
-                      )),
-                    ),
-                  ],
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TransactionPage()),
+                );
+              },
+              child: Container(
+                color: Colors.green[100],
+                height: 200,
+                width: 200,
+                child: SizedBox(
+                  child: Stack(
+                    children: <Widget>[
+                      Image.asset("images/piggy.gif"),
+                      Container(
+                        color: Colors.black12,
+                        child: Center(
+                            child: Text(
+                          "                      transactions",
+                          style:
+                              TextStyle(fontFamily: "Pacifico", fontSize: 30.0),
+                        )),
+                      ),
+                    ],
+                  ),
+                  height: 150.0,
                 ),
-                height: 150.0,
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(
